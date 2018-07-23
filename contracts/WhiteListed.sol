@@ -4,7 +4,7 @@ pragma solidity ^0.4.24;
 // WhiteListed - SENC Token Sale Whitelisting Contract
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------

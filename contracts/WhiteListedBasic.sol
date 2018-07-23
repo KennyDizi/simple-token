@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// WhiteListedBasic - SENC Token Sale Whitelisting Interface
+// WhiteListedBasic - PTS Token Sale Whitelisting Interface
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------

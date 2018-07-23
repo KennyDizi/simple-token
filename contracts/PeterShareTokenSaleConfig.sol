@@ -1,17 +1,17 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// SencTokenSaleConfig - SENC Token Sale Configuration
+// PeterShareTokenSaleConfig - PTS Token Sale Configuration
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "./SencTokenConfig.sol";
+import "./PeterShareTokenConfig.sol";
 
-contract SencTokenSaleConfig is SencTokenConfig 
+contract PeterShareTokenSaleConfig is PeterShareTokenConfig 
 {
     uint public constant TOKEN_FOUNDINGTEAM =  50000000 * DECIMALSFACTOR;
     uint public constant TOKEN_EARLYSUPPORTERS = 100000000 * DECIMALSFACTOR;

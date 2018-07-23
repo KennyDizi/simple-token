@@ -5,7 +5,7 @@ pragma solidity ^0.4.24;
 // token that is sent to the child contract. 
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------
@@ -13,7 +13,8 @@ pragma solidity ^0.4.24;
 import "./zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "./Operatable.sol";
 
-contract Salvageable is Operatable {
+contract Salvageable is Operatable
+{
     // Salvage other tokens that are accidentally sent into this token
     function emergencyERC20Drain(ERC20 oddToken, uint amount) public canOperate {
         if (address(oddToken) == address(0)) {

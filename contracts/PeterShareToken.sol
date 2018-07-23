@@ -1,21 +1,21 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// SencToken - ERC20 Token
+// PeterShareToken - ERC20 Token
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
 import "./zeppelin-solidity/contracts/token/ERC20/PausableToken.sol";
 import "./zeppelin-solidity/contracts/math/SafeMath.sol";
-import "./SencTokenConfig.sol";
+import "./PeterShareTokenConfig.sol";
 import "./Salvageable.sol";
 
 // ----------------------------------------------------------------------------
-// The SENC token is an ERC20 token that:
+// The PTS token is an ERC20 token that:
 // 1. Token is paused by default and is only allowed to be unpaused once the
 //    Vesting contract is activated.
 // 2. Tokens are created on demand up to TOTALSUPPLY or until minting is
@@ -24,7 +24,7 @@ import "./Salvageable.sol";
 //    has sufficient balance.
 // ----------------------------------------------------------------------------
 
-contract SencToken is PausableToken, SencTokenConfig, Salvageable {
+contract PeterShareToken is PausableToken, PeterShareTokenConfig, Salvageable {
     using SafeMath for uint;
 
     string public name = NAME;

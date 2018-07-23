@@ -1,10 +1,10 @@
 var WhiteListed = artifacts.require("./WhiteListed.sol");
-var SencTokenSale = artifacts.require("./SencTokenSale.sol");
+var PeterShareTokenSale = artifacts.require("./PeterShareTokenSale.sol");
 module.exports = function (deployer) {
 	// deployer.deploy(SafeMath);
 	// deployer.link(SafeMath, [ERC223SENToken, TokenSale]);
 	//deployer.deploy(WhiteListed);
-	//deployer.deploy(SencTokenSale);
+	//deployer.deploy(PeterShareTokenSale);
 	// deployer
 	// 	.deploy(
 	// 		TokenSale,

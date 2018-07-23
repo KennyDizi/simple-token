@@ -1,17 +1,17 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// SencTokenVesting - SENC Token Vesting Contract
+// SencTokenVesting - PTS Token Vesting Contract
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
 import "./zeppelin-solidity/contracts/math/Math.sol";
 import "./zeppelin-solidity/contracts/math/SafeMath.sol";
-import "./SencToken.sol";
+import "./PeterShareToken.sol";
 import "./Salvageable.sol";
 
 // ----------------------------------------------------------------------------
@@ -22,10 +22,10 @@ import "./Salvageable.sol";
 //   * To be separated into ~ 28 presale addresses
 // ----------------------------------------------------------------------------
 
-contract SencVesting is Salvageable {
+contract PeterShareVesting is Salvageable {
     using SafeMath for uint;
 
-    SencToken public token;
+    PeterShareToken public token;
 
     bool public started = false;
     uint public startTimestamp;
@@ -43,7 +43,7 @@ contract SencVesting is Salvageable {
     event NewEntry(address indexed beneficiary, uint tokens, bool advance, uint periods, uint periodLength);
     event Withdrawn(address indexed beneficiary, uint withdrawn);
 
-    constructor(SencToken _token) public {
+    constructor(PeterShareToken _token) public {
         require(_token != address(0));
         token = _token;
     }
@@ -141,7 +141,7 @@ contract SencVesting is Salvageable {
     }
 
     function emergencyERC20Drain(ERC20 oddToken, uint amount) public canOperate {
-        // Cannot withdraw SencToken if vesting started
+        // Cannot withdraw PeterShareToken if vesting started
         require(!started || address(oddToken) != address(token));
         super.emergencyERC20Drain(oddToken,amount);
     }

@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// SencTokenSale - SENC Token Sale Contract
+// PeterShareTokenSale - PTS Token Sale Contract
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
-// http://www.sentinel-chain.org/
+// http://www.btcex.ch/
 //
 // The MIT Licence.
 // ----------------------------------------------------------------------------
@@ -12,14 +12,14 @@ pragma solidity ^0.4.24;
 import "./zeppelin-solidity/contracts/math/SafeMath.sol";
 import "./zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "./SencTokenSaleConfig.sol";
+import "./PeterShareTokenSaleConfig.sol";
 import "./WhiteListedBasic.sol";
 import "./WhiteListed.sol";
 import "./Salvageable.sol";
-import "./SencToken.sol";
+import "./PeterShareToken.sol";
 
 // ----------------------------------------------------------------------------
-// The SENC Token Sale is organised as follows:
+// The PTS Token Sale is organised as follows:
 // 1. 10% (50,000,000) of total supply will be minted and sent to founding team weallet.
 // 2. 20% (100,000,000) of total supply will be minted and sent to early supporter wallet.
 // 3. 20% (100,000,000) of total supply will be minted and sent to presale wallet.
@@ -38,11 +38,11 @@ import "./SencToken.sol";
 //    - batch 3: start_date+2 12:01 (guaranteed and non-guaranteed allocations)
 // ----------------------------------------------------------------------------
 
-contract SencTokenSale is SencTokenSaleConfig, Ownable, Pausable, Salvageable {
+contract PeterShareTokenSale is PeterShareTokenSaleConfig, Ownable, Pausable, Salvageable {
     using SafeMath for uint;
     bool public isFinalized = false;
 
-    SencToken public token;
+    PeterShareToken public token;
     uint[] public batchStartTimes;
     uint public endTime;
     uint public startTime;
@@ -93,7 +93,7 @@ contract SencTokenSale is SencTokenSaleConfig, Ownable, Pausable, Salvageable {
         privateSaleSencPerMEth = usdPerMEth.mul(MILLION).div(PRIVATESALE_USD_PER_MSENC);
 
         // Let the token stuff begin
-        token = new SencToken();
+        token = new PeterShareToken();
 
         // Mint initial tokens
         mintEarlySupportersTokens(_earlySupportersWallet, TOKEN_EARLYSUPPORTERS);

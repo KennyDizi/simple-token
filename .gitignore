@@ -1,2 +1,3 @@
 #build folders
 build/
+/node_modules
