@@ -9,9 +9,9 @@ pragma solidity ^0.4.24;
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "./zeppelin-solidity/contracts/math/SafeMath.sol";
-import "./zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "./zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "./PeterShareTokenSaleConfig.sol";
 import "./WhiteListedBasic.sol";
 import "./WhiteListed.sol";

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// WhiteListed - SENC Token Sale Whitelisting Contract
+// WhiteListed - PTS Token Sale Whitelisting Contract
 //
 // Copyright (c) 2018 Bitcoin Exchange Pte Ltd.
 // http://www.btcex.ch/
@@ -13,11 +13,11 @@ import "./Operatable.sol";
 import "./WhiteListedBasic.sol";
 
 // ----------------------------------------------------------------------------
-// The SENC Token Sale Whitelist Contract is designed to facilitate the features:
+// The PTS Token Sale Whitelist Contract is designed to facilitate the features:
 //
 // 1. Track whitelisted users and allocations
 // Each whitelisted user is tracked by its wallet address as well as the maximum
-// SENC allocation it can purchase.
+// PTS allocation it can purchase.
 //
 // 2. Track batches
 // To prevent a gas war, each contributor will be assigned a batch number that

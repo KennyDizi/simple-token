@@ -10,9 +10,10 @@ pragma solidity ^0.4.24;
 // ----------------------------------------------------------------------------
 
 import "zeppelin-solidity/contracts/token/ERC20/PausableToken.sol";
-import "./zeppelin-solidity/contracts/math/SafeMath.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "./PeterShareTokenConfig.sol";
 import "./Salvageable.sol";
+import "./BurnableToken.sol";
 
 // ----------------------------------------------------------------------------
 // The PTS token is an ERC20 token that:
@@ -24,7 +25,7 @@ import "./Salvageable.sol";
 //    has sufficient balance.
 // ----------------------------------------------------------------------------
 
-contract PeterShareToken is PausableToken, PeterShareTokenConfig, Salvageable {
+contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig, Salvageable {
     using SafeMath for uint;
 
     string public name = NAME;
@@ -76,5 +77,10 @@ contract PeterShareToken is PausableToken, PeterShareTokenConfig, Salvageable {
             i += 1;
         }
         return(i);
+    }
+
+    //burnable token
+    function burn(uint256 _value) whenNotPaused public {
+        super.burn(_value);
     }
 }
