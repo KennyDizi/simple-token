@@ -10,8 +10,8 @@ pragma solidity ^0.4.24;
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./zeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+import "./zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./OperatableBasic.sol";
 
 contract Operatable is Ownable, OperatableBasic {

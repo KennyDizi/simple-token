@@ -9,9 +9,9 @@ pragma solidity ^0.4.24;
 // The MIT Licence.
 // ----------------------------------------------------------------------------
 
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "./zeppelin-solidity/contracts/math/SafeMath.sol";
+import "./zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "./PeterShareTokenSaleConfig.sol";
 import "./WhiteListedBasic.sol";
 import "./WhiteListed.sol";
@@ -46,7 +46,7 @@ contract PeterShareTokenSale is PeterShareTokenSaleConfig, Ownable, Pausable, Sa
     uint[] public batchStartTimes;
     uint public endTime;
     uint public startTime;
-    address public agTechWallet;        // InfoCorp AgTech Wallet Address to receive ETH
+    address public agTechWallet;        // BTCEX AgTech Wallet Address to receive ETH
     uint public usdPerMEth;             // USD per million ETH. E.g. ETHUSD 844.81 is specified as 844,810,000
     uint public publicSaleSencPerMEth;  // Amount of token 1 million ETH can buy in public sale
     uint public privateSaleSencPerMEth; // Amount of token 1 million ETH can buy in private sale
@@ -54,6 +54,9 @@ contract PeterShareTokenSale is PeterShareTokenSaleConfig, Ownable, Pausable, Sa
     WhiteListedBasic public whiteListed;
     uint public numContributors;        // Discrete number of contributors
 
+    /*mapping is a variable
+    type that saves the relation between the user and the amount contributed to
+    this contract. An address (account) is a unique indentifier in the blockchain*/
     mapping (address => uint) public contributions; // to allow them to have multiple spends
 
     event Finalized();
@@ -194,7 +197,7 @@ contract PeterShareTokenSale is PeterShareTokenSaleConfig, Ownable, Pausable, Sa
 
     // Batch is in 0..n-1 format
     function isBatchActive(uint batch) public view returns (bool) {
-        if (block.timestamp > endTime) {
+        if (now > endTime) {
             return false;
         }
         if (uint(batch) >= batchStartTimes.length) {
