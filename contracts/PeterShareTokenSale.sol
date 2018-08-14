@@ -253,7 +253,7 @@ contract PeterShareTokenSale is PeterShareTokenSaleConfig, Ownable, Pausable, Sa
     }
 
     // Must be called after crowdsale ends, to do some extra finalization
-    function finalize() onlyOwner public {
+    function finalize() public onlyOwner {
         require(!isFinalized);
         require(hasEnded());
 

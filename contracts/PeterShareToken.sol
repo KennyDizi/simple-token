@@ -37,7 +37,7 @@ contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig,
     event MintFinished();
 
     modifier canMint() {
-        require(!mintingFinished);
+        require(!mintingFinished, "Minting finished");
         _;
     }
 
@@ -45,16 +45,16 @@ contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig,
         paused = true;
     }
 
-    function pause() onlyOwner public {
-        revert();
+    function pause() public onlyOwner {
+        revert("Can't revert");
     }
 
-    function unpause() onlyOwner public {
+    function unpause() public onlyOwner {
         super.unpause();
     }
 
-    function mint(address _to, uint _amount) onlyOwner canMint public returns (bool) {
-        require(totalSupply_.add(_amount) <= TOTALSUPPLY);
+    function mint(address _to, uint _amount) public onlyOwner canMint returns (bool) {
+        require(totalSupply_.add(_amount) <= TOTALSUPPLY, "Amount can't larger than Total Supply");
         totalSupply_ = totalSupply_.add(_amount);
         balances[_to] = balances[_to].add(_amount);
         emit Mint(_to, _amount);
@@ -62,7 +62,7 @@ contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig,
         return true;
     }
 
-    function finishMinting() onlyOwner canMint public returns (bool) {
+    function finishMinting() public onlyOwner canMint returns (bool) {
         mintingFinished = true;
         emit MintFinished();
         return true;
@@ -70,7 +70,7 @@ contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig,
 
     // Airdrop tokens from bounty wallet to contributors as long as there are enough balance
     function airdrop(address bountyWallet, address[] dests, uint[] values) public onlyOwner returns (uint) {
-        require(dests.length == values.length);
+        require(dests.length == values.length, "Invalid wallets address");
         uint i = 0;
         while (i < dests.length && balances[bountyWallet] >= values[i]) {
             this.transferFrom(bountyWallet, dests[i], values[i]);
@@ -80,7 +80,7 @@ contract PeterShareToken is BurnableToken, PausableToken, PeterShareTokenConfig,
     }
 
     //burnable token
-    function burn(uint256 _value) whenNotPaused public {
+    function burn(uint256 _value) public whenNotPaused {
         super.burn(_value);
     }
 }

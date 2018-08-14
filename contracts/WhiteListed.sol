@@ -43,8 +43,8 @@ contract WhiteListed is Operatable, WhiteListedBasic {
     event Whitelisted(address indexed addr, uint whitelistedCount, bool isWhitelisted, uint indexed batch, uint weiAllocation);
 
     function addWhiteListed(address[] addrs, uint[] batches, uint[] weiAllocation) external canOperate {
-        require(addrs.length == batches.length);
-        require(addrs.length == weiAllocation.length);
+        require(addrs.length == batches.length, "Invalid wallet address");
+        require(addrs.length == weiAllocation.length, "Invalid wallet address");
         for (uint i = 0; i < addrs.length; i++) {
             Batch storage batch = batchMap[addrs[i]];
             if (batch.isWhitelisted != true) {
@@ -75,14 +75,14 @@ contract WhiteListed is Operatable, WhiteListedBasic {
 
     function removeWhiteListed(address addr) public canOperate {
         Batch storage batch = batchMap[addr];
-        require(batch.isWhitelisted == true); 
+        require(batch.isWhitelisted == true, "Whitelisted doesn't contain this wallet"); 
         batch.isWhitelisted = false;
         count--;
         emit Whitelisted(addr, count, false, batch.batchNumber, batch.weiAllocated);
     }
 
     function setAllocation(address[] addrs, uint[] weiAllocation) public canOperate {
-        require(addrs.length == weiAllocation.length);
+        require(addrs.length == weiAllocation.length, "Invalid wallet address");
         for (uint i = 0; i < addrs.length; i++) {
             if (batchMap[addrs[i]].isWhitelisted == true) {
                 batchMap[addrs[i]].weiAllocated = weiAllocation[i];
@@ -91,7 +91,7 @@ contract WhiteListed is Operatable, WhiteListedBasic {
     }
 
     function setBatchNumber(address[] addrs, uint[] batch) public canOperate {
-        require(addrs.length == batch.length);
+        require(addrs.length == batch.length, "Invalid wallet address");
         for (uint i = 0; i < addrs.length; i++) {
             if (batchMap[addrs[i]].isWhitelisted == true) {
                 batchMap[addrs[i]].batchNumber = batch[i];

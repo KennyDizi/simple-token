@@ -19,7 +19,7 @@ contract Operatable is Ownable, OperatableBasic {
     address public secondaryOperator;
 
     modifier canOperate() {
-        require(msg.sender == primaryOperator || msg.sender == secondaryOperator || msg.sender == owner);
+        require(msg.sender == primaryOperator || msg.sender == secondaryOperator || msg.sender == owner, "Conditions are missed");
         _;
     }
     

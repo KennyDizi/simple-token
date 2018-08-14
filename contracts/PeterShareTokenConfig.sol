@@ -11,7 +11,7 @@ pragma solidity ^0.4.24;
 
 contract PeterShareTokenConfig 
 {
-    string public constant NAME = "PeterShares Chain Token";
+    string public constant NAME = "PeterShares Token";
     string public constant SYMBOL = "PTS";
     uint8 public constant DECIMALS = 18;
     uint public constant DECIMALSFACTOR = 10 ** uint(DECIMALS);
